@@ -31,7 +31,9 @@ export class SavingBalanceService {
           throw new NotFoundException(`Saving balance ${balanceId} not found!`);
         }
 
-        const amount = (savingBalance.availableAmount * interestRate) / 365;
+        const amount =
+          (savingBalance.availableAmount * interestRate) / 100 / 365;
+
         const savingInterestEntity = new SavingInterestEntity();
         savingInterestEntity.period = period;
         savingInterestEntity.interestRate = interestRate;
